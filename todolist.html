@@ -18,9 +18,11 @@
             getTaskText();
         }
 
-        function addTask(){
-             var textbox = document.getElementById('taskInput');
-             console.log(taskInput.value);
+        function getTaskText(){
+           const input = document.getElementById('taskInput');
+             const text = input.value.trim();
+             console.log("getTaskText() called: "+ input.value);
+             return{text,input};
         }
     </script>
 </body>
