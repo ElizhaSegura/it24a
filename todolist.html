@@ -37,12 +37,18 @@
         function addTaskItem(taskText){
             const li = document.createElement("li");
             li.textContent = taskText;
-
+                
             document.getElementById("taskList").appendChild(li);
             console.log("addTaskItem() called ->:", taskText, Date());
 
             const deleteBtn = createDeleteButton(li);
             li.appendChild(deleteBtn);
+
+            const taskSpan = document.createElement("span");
+            taskSpan.textContent = taskText;
+
+            const editBtn = createEditButton(li, taskSpan);
+            li.appendChild(editBtn);
         }
          
          function createDeleteButton(li){
@@ -52,7 +58,7 @@
             deleteBtn.className="delete=btn";
             deleteBtn.style.marginLeft = "8px";
             deleteBtn.style.backgroundColor = "#FF0000"
-             deleteBtn.onclick = () => handleDeleteClick(li);
+            deleteBtn.onclick = () => handleDeleteClick(li);
 
             console.log("createDeleteButton() called ->", li.textContent);
             return deleteBtn;
@@ -63,6 +69,17 @@
             console.log("handleDeleteClick() called ->", li.textContent.replace("X", "").trim(),Date());
         }
 
+        function createEditButton(li, taskSpan){
+            const editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.className = "edit-btn";
+            editBtn.style.marginLeft = "8px";
+            editBtn.style.backgroundColor = "#00ff80"
+            editBtn.onclick = () => handleDeleteClick(li);
+            
+            console.log("createEditButton() called =>", taskSpan.textContent);
+            return editBtn;
+        }
 
     </script>
 </body>
