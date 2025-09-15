@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <style>
+        .done {
+            text-decoration: line-through;
+            color: bisque;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -18,7 +26,7 @@
         function addTask() {
             const taskText = getTaskText();
 
-            if(taskText){
+            if (taskText) {
                 addTaskItem(taskText);
             } else {
                 console.log("No task entered");
@@ -49,6 +57,8 @@
             const editBtn = createEditButton(li, taskSpan);
             li.appendChild(editBtn);
 
+            const doneBtn = createDoneButton(taskSpan);
+            li.appendChild(doneBtn);
 
         }
 
@@ -75,7 +85,7 @@
             editBtn.textContent = "Edit";
             editBtn.className = "edit-btn";
             editBtn.style.marginLeft = "8px";
-            editBtn.onclick = () => handleDeleteClick(li);
+            editBtn.onclick = () => handleEditClick(li);
 
             console.log("createEditButton() called =>", taskSpan.textContent);
             return editBtn;
@@ -94,6 +104,22 @@
             } else {
                 console.log("handleEditClick() -> no changes made");
             }
+        }
+
+        function createDoneButton(taskSpan) {
+            const doneBtn = document.createElement("button");
+            doneBtn.textContent = "done";
+            doneBtn.onclick = () => {
+                const li = taskSpan.parentElement;
+                console.log(li);
+
+                taskSpan.classList.add("done");
+
+                const button = li.querySelectorAll("buttons");
+
+                console.log("Task completed", taskSpan.textContent, Date());
+            }
+            return doneBtn;
         }
 
 
