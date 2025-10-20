@@ -15,6 +15,10 @@
 
      <style> 
         #map {height: 700px;}
+        .popup-image {
+            max-width: 200px;
+            height: auto;
+        }
      </style>
 
 </head>
@@ -32,6 +36,14 @@
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+
+var marker = L.marker([8.360053042057906, 124.86834154336864]).addTo(map);
+const dogeImage = "<img src='https://i.pinimg.com/736x/1d/3b/71/1d3b713b6569f9fb837c467ab77cfe66.jpg' class='popup-image'>";
+const popupContent = `${dogeImage}<br><b>Hellooo!</b><br>I'm right here.`;
+
+marker.bindPopup(popupContent).openPopup();
+
 
 </script>
 
