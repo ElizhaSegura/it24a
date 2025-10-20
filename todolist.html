@@ -8,34 +8,31 @@
     <style>
         .done {
             text-decoration: line-through;
-            color:grey;
+            color: grey;
         }
-        
     </style>
 </head>
+
 <body>
 
-    <h1>To Do List</h1>
-    <input type="text" 
-           id="taskInput" 
-           placeholder="Add a task"
-     />
+    <h1 style="margin-left: 25px;">To Do List</h1>
+    <input type="text" id="taskInput" placeholder="Add a task" ; />3q
     <button onclick="addTask()" style="background-color:#28a745; color:aliceblue;"> Add</button>
-    
-    <ul id="taskList">Your task goes here ....</ul>
+
+    <ul id="taskList" style="margin-left: -1px;">Your task goes here ....</ul>
 
     <script>
-        function addTask(){
+        function addTask() {
             const taskText = getTaskText();
 
-            if(taskText) {
+            if (taskText) {
                 addTaskItem(taskText);
             } else {
                 console.log("No task entered");
             }
         }
 
-        function getTaskText(){
+        function getTaskText() {
             const input = document.getElementById('taskInput');
             const text = input.value.trim();
 
@@ -43,9 +40,9 @@
             return text;
         }
 
-        function addTaskItem(taskText){
+        function addTaskItem(taskText) {
             const li = document.createElement("li");
-          
+
             const taskSpan = document.createElement("span");
             taskSpan.textContent = taskText;
             li.appendChild(taskSpan);
@@ -61,12 +58,12 @@
 
             const doneBtn = createDoneButton(taskSpan);
             li.appendChild(doneBtn);
-            
+
         }
 
         function createDeleteButton(li) {
             const deleteBtn = document.createElement("button");
- 
+
             deleteBtn.textContent = "Delete";
             deleteBtn.className = "delete-btn";
             deleteBtn.style.marginLeft = "8px";
@@ -83,7 +80,7 @@
             console.log("handleDeleteClick() called ->", li.textContent.replace("X", "").trim(), Date());
         }
 
-        function createEditButton(li,taskSpan) {
+        function createEditButton(li, taskSpan) {
             const editBtn = document.createElement("button");
             editBtn.textContent = "Edit";
             editBtn.className = "edit-btn";
@@ -111,14 +108,14 @@
             }
         }
 
-        function createDoneButton(taskSpan){
+        function createDoneButton(taskSpan) {
             const doneBtn = document.createElement("button");
             doneBtn.textContent = "Done";
             doneBtn.style.marginLeft = "8px";
             doneBtn.style.backgroundColor = "#198754";
             doneBtn.style.color = "aliceblue";
 
-            doneBtn.onclick = () =>{
+            doneBtn.onclick = () => {
                 const li = taskSpan.parentElement;
                 console.log(li);
 
@@ -126,13 +123,13 @@
 
                 const buttons = li.querySelectorAll("button");
                 buttons.forEach(btn => btn.remove());
-              
+
                 console.log("Task completed", taskSpan.textContent, Date());
             }
             return doneBtn;
         }
-</script>
+    </script>
 
 </body>
-    
+
 </html>
